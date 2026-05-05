@@ -1,11 +1,11 @@
 import { Text, View, TextInput, Button } from 'react-native';
 import { useState, useEffect } from 'react';
-import { supabase } from '../src/supabase';
+import { supabase } from './src/supabase';
 
 export default function App() {
   const [nome, setNome] = useState('');
 
-  async function criarUuario() {
+  async function criarUsario() {
     const resposta = await supabase
       .from('usuarios')
       .insert([{
@@ -27,7 +27,7 @@ export default function App() {
       value={nome}
       onChangeText={setNome}
       />
-      <Button title='Enviar' />
+      <Button title='Enviar' onPress={criarUsario}/>
     </View>
   )
 }
