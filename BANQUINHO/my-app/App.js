@@ -1,8 +1,25 @@
 import { Text, View, TextInput, Button } from 'react-native';
 import { useState, useEffect } from 'react';
+import { supabase } from '../src/supabase';
 
 export default function App() {
   const [nome, setNome] = useState('');
+
+  async function criarUuario() {
+    const resposta = await supabase
+      .from('usuarios')
+      .insert([{
+        nome:nome
+
+      }]);
+    if(resposta.error) {
+      alert('Ocorreu um erro ao enviar os dados ao banco '+resposta.erro.message);
+    }else{
+      alert('Deu certo :)')
+    }
+    
+  }
+
   return(
     <View>
       <TextInput
