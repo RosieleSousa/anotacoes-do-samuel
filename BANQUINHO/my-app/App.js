@@ -82,16 +82,22 @@ export default function App() {
 
   return(
     <View>
-      <TextInput
-      placeholder='Insira o nome do usuário:'
-      value={desejo}
-      onChangeText={setDesejo}
-      />
-      <TextInput
-      placeholder= 'insira seu desejo:'
-      value={detalhes}
-      onChangeText={setDetalhes}/>
-      <Button title='Enviar' onPress={inserirRegistro}/>
+      {
+      session && (
+        <View>
+        <TextInput
+    placeholder='Insira o nome do usuário:'
+    value={desejo}
+    onChangeText={setDesejo}
+    />
+    <TextInput
+    placeholder= 'insira seu desejo:'
+    value={detalhes}
+    onChangeText={setDetalhes}/>
+    <Button title='Enviar' onPress={inserirRegistro}/>
+       </View>
+      )
+      }
 
       
     </View>
